@@ -23,6 +23,9 @@ const { Content } = await render(post);
   title={post.data.title}
   description={post.data.description}
   pubDate={post.data.pubDate}
+  authors={post.data.authors}
+  originalTitle={post.data.originalTitle}
+  originalUrl={post.data.originalUrl}
 >
   <Content />
 </PostLayout>

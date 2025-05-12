@@ -140,7 +140,7 @@ blockquote {
   border-left: 4px solid var(--accent);
   padding: 0 0 0 20px;
   margin: 0px;
-  font-size: 1.333em;
+  font-size: 1em;
 }
 hr {
   border: none;
@@ -177,4 +177,25 @@ hr {
 pre,
 code {
   font-family: var(--font-family-mono);
+}
+
+body {
+  padding-top: 0; /* 初始设置为0，如果header是sticky/fixed的，后续页面布局再调整 */
+  padding-bottom: var(--footerHeight); /* 为页脚预留空间 */
+}
+/* 确保 Footer 在 BaseLayout 中表现正常 */
+footer {
+  height: var(--footerHeight);
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: 0 var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Let Footer.astro's style handle inner content alignment */
+  font-size: 0.8rem; /* Make font smaller to match reduced height */
+  width: 100%; /* 确保宽度为 100% */
+  box-sizing: border-box; /* 防止 padding 影响总宽度 */
+  position: fixed; /* 固定在底部 */
+  bottom: 0;
+  left: 0;
 }
