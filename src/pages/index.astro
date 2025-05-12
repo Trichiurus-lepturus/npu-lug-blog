@@ -42,6 +42,13 @@ const githubUrl = "https://github.com/npu-lug"; // TODO: Replace with your org's
     display: block; /* Ensure it behaves as a block element */
     margin: 0 auto; /* Center if needed within container */
   }
+
+  @media (max-width: 768px) {
+    .site-logo {
+      width: 80vw;
+    }
+  }
+
   .home-nav {
     display: flex;
     gap: var(--spacing-lg);
