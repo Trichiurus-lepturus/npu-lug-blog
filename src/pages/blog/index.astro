@@ -10,12 +10,12 @@ const posts = (await getCollection("blog")).sort(
 );
 
 // 为博客列表页设置标题和描述
-const pageTitle = `Blog - ${SITE_TITLE}`;
-const pageDescription = "Recent articles from our team."; // 组织技术博客描述示例
+const pageTitle = `博客 - ${SITE_TITLE}`;
+const pageDescription = "来自 NPULUG 的最新文章。";
 ---
 
 <NavLayout title={pageTitle} description={pageDescription}>
-  <h1 class="page-title">Blog</h1>
+  <h1 class="page-title">博客</h1>
   <section>
     <ul class="post-list">
       {

@@ -199,3 +199,43 @@ footer {
   bottom: 0;
   left: 0;
 }
+
+@media (max-width: 720px) {
+  main {
+    width: 90%;
+  }
+}
+
+@media (min-width: 720px) {
+  main {
+    width: 50%;
+  }
+}
+
+.back-link {
+  margin: 5vh 0;
+  height: 48px;
+}
+.back-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  box-sizing: border-box;
+}
+.back-link a:hover {
+  color: var(--color-primary);
+  background-color: var(--color-footer-bg);
+  border-color: var(--color-primary);
+}

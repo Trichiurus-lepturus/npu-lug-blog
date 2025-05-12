@@ -26,7 +26,7 @@ const { title, description, pubDate, authors, originalTitle, originalUrl } =
 <BaseLayout title={title} description={description}>
   <main>
     <div class="back-link">
-      <a href="/blog">&larr; Back to Blog</a>
+      <a href="/blog" aria-label="返回博客" title="返回博客">&larr;</a>
     </div>
     <article>
       <h1>{title}</h1>
@@ -41,7 +41,7 @@ const { title, description, pubDate, authors, originalTitle, originalUrl } =
         {
           authors && authors.length > 0 && (
             <div class="authors">
-              <span>By: </span>
+              <span>作者：</span>
               {authors.map((author: Author, index: number) => (
                 <span class="author-item">
                   {author.url ? (
@@ -66,7 +66,7 @@ const { title, description, pubDate, authors, originalTitle, originalUrl } =
         originalUrl && (
           <div class="original-article-info">
             <p>
-              Originally published at:{" "}
+              原文首发于：
               <a href={originalUrl} target="_blank" rel="noopener noreferrer">
                 {originalTitle || originalUrl}
               </a>
@@ -79,17 +79,6 @@ const { title, description, pubDate, authors, originalTitle, originalUrl } =
   </main>
 </BaseLayout>
 <style>
-  .back-link {
-    margin-bottom: var(--spacing-lg);
-  }
-  .back-link a {
-    color: var(--color-secondary);
-    text-decoration: none;
-  }
-  .back-link a:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
   article {
     /* Add styles for article content if needed */
   }

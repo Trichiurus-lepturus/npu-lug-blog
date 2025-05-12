@@ -1,18 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-const githubUrl = "https://github.com/withastro/astro"; // TODO: Replace with your org's GitHub URL
+const githubUrl = "https://github.com/npu-lug"; // TODO: Replace with your org's GitHub URL
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main class="home-main">
     <div class="logo-container">
       <!-- Replace placeholder with actual logo -->
-      <img src="/images/logo.svg" alt="Logo" class="site-logo" />
+      <img src="/images/logo.svg" alt="NPULUG 标志" class="site-logo" />
     </div>
     <nav class="home-nav">
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
+      <a href="/blog">博客</a>
+      <a href="/about">关于</a>
       <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </main>
@@ -32,13 +32,9 @@ const githubUrl = "https://github.com/withastro/astro"; // TODO: Replace with yo
     padding-bottom: 0;
   }
   .logo-container {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
   }
-  /* Remove placeholder styles */
-  /* 
-  .placeholder-logo { ... } 
-  */
-  /* Add styles for the actual logo */
+
   .site-logo {
     width: 50vw; /* Adjust width as needed */
     height: auto; /* Maintain aspect ratio */
