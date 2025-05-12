@@ -3,6 +3,11 @@ title: 为rEFInd启用Secure Boot
 pubDate: 2023-05-26
 updateDate: 2024-04-04
 slug: refind-secure-boot
+authors:
+  - name: Angine
+    url: https://angine.tech
+originalTitle: 为rEFInd启用Secure Boot | Angine's Blog
+originalUrl: https://angine.tech/posts/fb54/
 ---
 
 > 不论如何，至少电脑没有变万元大砖头，可喜可贺！~~其实不太可能变砖。~~
