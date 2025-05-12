@@ -11,6 +11,12 @@ const orgName = "NPULUG"; // Update org name
     <span class="copyright"
       >&copy; {today.getFullYear()} {orgName}. All rights reserved.</span
     >
+    <a
+      href="/rss.xml"
+      class="rss-link"
+      target="_blank"
+      rel="noopener noreferrer">RSS Feed</a
+    >
     {/* GitHub link removed */}
   </div>
 </footer>
@@ -20,8 +26,9 @@ const orgName = "NPULUG"; // Update org name
   /* Add new styles scoped to the footer content arrangement */
   .footer-content {
     display: flex;
-    justify-content: center; /* Center the copyright text */
-    align-items: center;
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Align items vertically */
+    gap: 1rem; /* Add space between copyright and RSS link */
     width: 100%;
     max-width: var(--content-width);
     margin: 0 auto;
@@ -30,6 +37,11 @@ const orgName = "NPULUG"; // Update org name
 
   .copyright {
     font-size: 0.8rem;
+  }
+
+  .rss-link {
+    font-size: 0.8rem;
+    margin-left: 0.1rem;
   }
 
   /* Remove github-link styles */

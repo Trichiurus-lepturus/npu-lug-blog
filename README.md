@@ -1,68 +1,54 @@
-# Astro Starter Kit: Blog
+# NPULUG Blog
 
-```sh
-bun create astro@latest -- --template blog
-```
+这是西北工业大学 Linux 用户组 (NPULUG) 的技术博客。
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/NPULUG/blog)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+<!-- Add other relevant buttons if needed -->
 
 Features:
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- ✅ 基于 Astro 构建，性能优异
+- ✅ SEO 友好 (Canonical URLs, OpenGraph)
+- ✅ Sitemap 和 RSS Feed 支持
+- ✅ Markdown & MDX 内容支持
+- ✅ 支持文章多作者展示
+- ✅ 可选的原文链接/标题
+- ✅ 平滑的页面过渡效果 (View Transitions)
+- ✅ 中文日期格式化
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 项目结构
 
 ```text
-├── public/
+├── public/         # 静态资源 (图片, favicons等)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
+│   ├── components/   # Astro / UI 框架组件
+│   ├── content/      # 内容集合 (博客文章等)
+│   │   └── blog/     # 博客文章 Markdown/MDX 文件
+│   ├── layouts/      # 页面布局
+│   └── pages/        # 页面路由
+├── astro.config.mjs  # Astro 配置文件
 ├── README.md
 ├── package.json
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+博客文章存放在 `src/content/blog/` 目录中。每篇文章的元数据 (frontmatter) 在 `src/content/config.ts` 中定义。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+静态资源（如图片）可以放在 `public/` 目录下。
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## 🧞 命令
 
-Any static assets, like images, can be placed in the `public/` directory.
+所有命令都在项目根目录下运行：
 
-## 🧞 Commands
+| Command         | Action                                   |
+| :-------------- | :--------------------------------------- |
+| `bun install`   | 安装依赖                                 |
+| `bun dev`       | 启动本地开发服务器 (localhost:4321)      |
+| `bun build`     | 构建生产版本到 `./dist/`                 |
+| `bun preview`   | 本地预览构建后的站点                     |
+| `bun astro ...` | 运行 Astro CLI 命令 (例如 `astro check`) |
 
-All commands are run from the root of the project, from a terminal:
+## 协议
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+本项目使用 MIT License。
