@@ -2,7 +2,7 @@
 
 这是西北工业大学 Linux 用户组 (NPULUG) 的技术博客。
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/NPULUG/blog)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/npu-lug/blog)
 
 <!-- Add other relevant buttons if needed -->
 
