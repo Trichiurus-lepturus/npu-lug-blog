@@ -1,0 +1,33 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <div class="back-link">
+      <a href="/blog">&larr; Back to Blog</a>
+    </div>
+    <article>
+      <slot />
+    </article>
+  </main>
+</BaseLayout>
+<style>
+  .back-link {
+    margin-bottom: var(--spacing-lg);
+  }
+  .back-link a {
+    color: var(--color-secondary);
+    text-decoration: none;
+  }
+  .back-link a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  article {
+    /* Add styles for article content if needed */
+  }
+</style>
+
