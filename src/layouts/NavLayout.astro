@@ -1,0 +1,21 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main>
+    <slot />
+  </main>
+</BaseLayout>
+<style>
+  main {
+    /* Add some top padding to prevent content from hiding behind a potentially fixed/sticky header */
+    /* Using CSS variable defined in BaseLayout/global.css */
+    padding-top: calc(var(--header-height) + var(--spacing-lg));
+  }
+</style>
+

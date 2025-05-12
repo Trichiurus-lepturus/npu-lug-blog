@@ -1,0 +1,46 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css"; // 引入全局样式
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style
+      define:vars={{
+        headerHeight: "var(--header-height)", // 将 CSS 变量传递给 style 标签
+        footerHeight: "var(--footer-height)",
+      }}
+    >
+      /* 可以在这里添加 BaseLayout 特有的样式，或者使用全局样式 */
+      body {
+        padding-top: 0; /* 初始设置为0，如果header是sticky/fixed的，后续页面布局再调整 */
+        padding-bottom: var(--footerHeight); /* 为页脚预留空间 */
+      }
+      /* 确保 Footer 在 BaseLayout 中表现正常 */
+      footer {
+        height: var(--footerHeight);
+        background-color: var(--color-footer-bg);
+        color: var(--color-footer-text);
+        padding: 0 var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center; /* 或 space-between, flex-start, flex-end */
+        font-size: 0.9rem; /* 稍微小一点的字体 */
+        width: 100%; /* 确保宽度为 100% */
+        box-sizing: border-box; /* 防止 padding 影响总宽度 */
+        position: fixed; /* 固定在底部 */
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+    {/* 子页面内容将插入此处 */}
+    <Footer />
+  </body>
+</html>
