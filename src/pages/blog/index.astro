@@ -1,111 +1,96 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import NavLayout from "../../layouts/NavLayout.astro";
+import { SITE_TITLE } from "../../consts"; // SITE_DESCRIPTION 可能不再需要
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+// 获取并排序博客文章
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// 为博客列表页设置标题和描述
+const pageTitle = `Blog - ${SITE_TITLE}`;
+const pageDescription = "Recent articles from our team."; // 组织技术博客描述示例
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<NavLayout title={pageTitle} description={pageDescription}>
+  <h1 class="page-title">Blog</h1>
+  <section>
+    <ul class="post-list">
+      {
+        posts.map((post) => {
+          // Prefer post.data.slug, fallback to deriving from post.id
+          const slug = post.data.slug || post.id.replace(/\.[^/.]+$/, "");
+          return (
+            <li class="post-item">
+              <a href={`/blog/${slug}/`}>
+                {" "}
+                {/* Use final slug */}
+                <h2 class="title">{post.data.title}</h2>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  <FormattedDate date={post.data.pubDate} />
+                </time>
+                {post.data.description && (
+                  <p class="description">{post.data.description}</p>
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</NavLayout>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl); /* 列表项之间的间距 */
+  }
+  .post-item a {
+    display: block; /* 使整个区域可点击 */
+    text-decoration: none;
+    color: inherit; /* 继承父元素颜色 */
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .post-item a:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .post-item:hover .title {
+    color: var(--color-primary);
+  }
+
+  .post-item .title {
+    font-size: 1.5em; /* 调整标题大小 */
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-sm) 0;
+    transition: color 0.2s ease;
+  }
+  .post-item time {
+    display: block;
+    font-size: 0.9em;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+  .post-item .description {
+    font-size: 1em;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.6;
+  }
+  h1 {
+    margin: var(--spacing-xxl) var(--spacing-lg);
+  }
+</style>

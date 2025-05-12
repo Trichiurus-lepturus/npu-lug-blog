@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css"; // 引入全局样式
 
 const { title, description } = Astro.props;
+// const githubUrl = "https://github.com/withastro/astro"; // Remove global githubUrl
 ---
 
 <html lang="en">
@@ -28,17 +29,27 @@ const { title, description } = Astro.props;
         padding: 0 var(--spacing-md);
         display: flex;
         align-items: center;
-        justify-content: center; /* 或 space-between, flex-start, flex-end */
-        font-size: 0.9rem; /* 稍微小一点的字体 */
+        justify-content: center; /* Let Footer.astro's style handle inner content alignment */
+        font-size: 0.8rem; /* Make font smaller to match reduced height */
         width: 100%; /* 确保宽度为 100% */
         box-sizing: border-box; /* 防止 padding 影响总宽度 */
         position: fixed; /* 固定在底部 */
         bottom: 0;
         left: 0;
       }
+
+      /* Remove GitHub corner link styles */
+      /*
+      .github-corner-link { ... }
+      .github-corner-link:hover { ... }
+      .github-corner-link svg { ... }
+      */
     </style>
   </head>
   <body>
+    {/* Remove GitHub corner link HTML */}
+    {/* <a href={githubUrl} ...> ... </a> */}
+
     <slot />
     {/* 子页面内容将插入此处 */}
     <Footer />
